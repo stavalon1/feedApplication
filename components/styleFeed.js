@@ -1,17 +1,17 @@
 import { StyleSheet} from 'react-native';
 
 
-const productListStyle = StyleSheet.create({
+const styleFeed = StyleSheet.create({
 
 
-    pageContainer: {
+    Container: {
       width:"100%",
       height:"100%",
       display:'flex',
       justifyContent:"space-evenly",
       alignItems: 'center'
       },
-    ProductListContainer: {
+    feedContainer: {
        width: '95%',
        height:"75%",
        display:"flex",
@@ -24,7 +24,7 @@ const productListStyle = StyleSheet.create({
       display:"flex",
       flexDirection:"row",
     },
-    contentContainer:{
+    detailsContainer:{
       backgroundColor:'#022F40',
       height:"100%",
       width:"35%",
@@ -34,7 +34,7 @@ const productListStyle = StyleSheet.create({
     //  borderColor:"grey",
       borderWidth:0.3
     },
-    imageContainer:{
+    img:{
       height:"100%",
       width:"35%",
       flexDirection:"column",
@@ -42,23 +42,23 @@ const productListStyle = StyleSheet.create({
       justifyContent:"space-around",
       borderWidth:0.3,
     },
-    rowContainer:{
+    detailsPublisher:{
       width:"90%",
       height:"10%",
       alignItems:"center",
       flexDirection:"row",
       marginLeft:10,
     },
-    authorRowContainer:{
+    publish:{
       width:"100%",
       height:"20%",
       display:"flex",
       justifyContent:"center",
       alignItems:"center",
     },
-    baseText: {
+    textStyle: {
         fontFamily: "Cochin",
-        fontSize:10,
+        fontSize:12,
         color:'#ffffff',
       },
       textBlockContainer:{
@@ -68,11 +68,12 @@ const productListStyle = StyleSheet.create({
         borderColor:"grey",
         borderWidth:1
       },
-      productTextBlockContainer:{
-        width:'50%',
+      blockPublisher:{
+        width:'68%',
         fontSize:10,
         display:"flex",
         justifyContent:"center",
+        marginLeft:-8
       },
       textBoxContainer:{
         fontSize:10,
@@ -124,4 +125,4 @@ const productListStyle = StyleSheet.create({
        },
     
   });
-export default productListStyle 
+export default styleFeed; 

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View,ScrollView,
   TouchableOpacity, ActivityIndicator, FlatList,Button,Image,Platform} from 'react-native';
 import pageStyle from '../components/styleFeed';
-export default function ProductList({navigation}) {
+export default function Feed({navigation}) {
   
    const [producuts,setProducts]=useState([])
    const [val,setVal]=useState(1);
@@ -13,24 +13,7 @@ export default function ProductList({navigation}) {
        loadData();
     
   }, );
-  function clean(object) {
-    Object
-        .entries(object)
-        .forEach(([k, v]) => {
-            if (v && typeof v === 'object') {
-                clean(v);
-            }
-            if (v && typeof v === 'object' && !Object.keys(v).length || v === null || v === undefined ||v=="") {
-                if (Array.isArray(object)) {
-                    object.splice(k, 1);
-                } else {
-                    object[k]="untitled";
-                }
-            }
-        });
-    return object;
-}
-
+  
   const loadData = async () => {
     const response = await fetch('http://retailsapi.us-east-2.elasticbeanstalk.com/api/feedapp/getfeed',
       {
@@ -40,13 +23,11 @@ export default function ProductList({navigation}) {
     const data = await response.json();
     setProducts(data.products);
     setVal(0)
-   
- 
   }
         
     return (
-    <View style={pageStyle.pageContainer}>
-       <View style={pageStyle.ProductListContainer}>
+    <View style={pageStyle.Container}>
+       <View style={pageStyle.feedContainer}>
        <ScrollView vertical>
           {producuts.map((product,key)=>{
             
@@ -54,39 +35,40 @@ export default function ProductList({navigation}) {
                 
                 return(
                   <View style={pageStyle.productContainer} key={product.id}>
-                    <View style={pageStyle.imageContainer}>
+                    <View style={pageStyle.img}>
                       <Image source={{uri:product.productImage}}
-                        style={{width:"100%", height: "100%",justifyContent:'center'}}></Image>
+                        style={{width:"100%", height: "100%",justifyContent:'center'}}>
+                        </Image>
                     </View>
-                    <View style={pageStyle.contentContainer}>
-                      <View style={pageStyle.authorRowContainer}><Text style={pageStyle.baseText}><Text style={{fontSize:20}}>publisher</Text></Text></View>
-                      <View style={pageStyle.rowContainer}>
-                          <View  style={pageStyle.authorTextBlockContainer}><Text style={pageStyle.baseText}>Name: </Text></View>
-                          <View style={pageStyle.authorTextBoxContainer}><Text style={pageStyle.baseText}>{product.publisher.name}</Text></View>
+                    <View style={pageStyle.detailsContainer}>
+                      <View style={pageStyle.publish}><Text style={pageStyle.textStyle}><Text style={{fontSize:20}}>publisher</Text></Text></View>
+                      <View style={pageStyle.detailsPublisher}>
+                          <View  style={pageStyle.authorTextBlockContainer}><Text style={pageStyle.textStyle}>Name: </Text></View>
+                          <View style={pageStyle.authorTextBoxContainer}><Text style={pageStyle.textStyle}>{product.publisher.name}</Text></View>
                       </View>
-                      <View style={pageStyle.rowContainer}>
-                          <View  style={pageStyle.authorTextBlockContainer}><Text style={pageStyle.baseText}>Id: </Text></View>
-                          <View style={pageStyle.authorTextBoxContainer}><Text style={pageStyle.baseText}>{product.publisher.id}</Text></View>
+                      <View style={pageStyle.detailsPublisher}>
+                          <View  style={pageStyle.authorTextBlockContainer}><Text style={pageStyle.textStyle}>Id: </Text></View>
+                          <View style={pageStyle.authorTextBoxContainer}><Text style={pageStyle.textStyle}>{product.publisher.id}</Text></View>
                       </View>
-                      <View style={pageStyle.rowContainer}>
-                          <View  style={pageStyle.authorTextBlockContainer}><Text style={pageStyle.baseText}>Email: </Text></View>
-                          <View style={pageStyle.authorTextBoxContainer}><Text style={pageStyle.baseText}>{product.publisher.email}</Text></View>
+                      <View style={pageStyle.detailsPublisher}>
+                          <View  style={pageStyle.authorTextBlockContainer}><Text style={pageStyle.textStyle}>Email: </Text></View>
+                          <View style={pageStyle.authorTextBoxContainer}><Text style={pageStyle.textStyle}>{product.publisher.email}</Text></View>
                       
                       </View>
-                      <View style={pageStyle.rowContainer}>
-                          <View  style={pageStyle.authorTextBlockContainer}><Text style={pageStyle.baseText}>Phone: </Text></View>
-                          <View style={pageStyle.authorTextBoxContainer}><Text style={pageStyle.baseText}>{product.publisher.mobile}</Text></View>
+                      <View style={pageStyle.detailsPublisher}>
+                          <View  style={pageStyle.authorTextBlockContainer}><Text style={pageStyle.textStyle}>Phone: </Text></View>
+                          <View style={pageStyle.authorTextBoxContainer}><Text style={pageStyle.textStyle}>{product.publisher.mobile}</Text></View>
                       
                       </View>
                     </View>
-                    <View style={pageStyle.contentContainer}>
-                      <View style={pageStyle.rowContainer}>
-                          <View  style={pageStyle.productTextBlockContainer}>
-                            <Text style={pageStyle.baseText}>Product Name:</Text>
-                            <Text style={pageStyle.baseText}>{product.productName}</Text>
+                    <View style={pageStyle.detailsContainer}>
+                      <View style={pageStyle.detailsPublisher}>
+                          <View  style={pageStyle.blockPublisher}>
+                            <Text style={pageStyle.textStyle}>Product Name:</Text>
+                            <Text style={pageStyle.textStyle}>{product.productName}</Text>
                             <Text></Text>
-                            <Text style={pageStyle.baseText}>Product Price:</Text>
-                            <Text style={pageStyle.baseText}>{product.productPrice}</Text>
+                            <Text style={pageStyle.textStyle}>Product Price:</Text>
+                            <Text style={pageStyle.textStyle}>{product.productPrice}</Text>
                             </View>
                       </View>                           
                     </View>
