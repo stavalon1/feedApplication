@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View,ScrollView,
-  TouchableOpacity, ActivityIndicator, FlatList,Button,Image,Platform} from 'react-native';
+import {  Text, View,ScrollView,TouchableOpacity,Image} from 'react-native';
 import pageStyle from '../components/styleFeed';
 export default function Feed({navigation}) {
   

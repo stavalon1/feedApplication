@@ -1,12 +1,10 @@
-import { StatusBar } from 'expo-status-bar';
-import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, TextInput,
-  TouchableOpacity, ActivityIndicator, FlatList } from 'react-native';
+
+import React from 'react';
+import { StyleSheet} from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import AA from './screens/addProduct'
-import BB from './screens/feed' 
-import {navigationRef} from './navigation/root';
+import Add from './screens/addProduct'
+import feed from './screens/feed' 
 const Stack = createStackNavigator();
 
 export default function App() {
@@ -14,8 +12,8 @@ export default function App() {
      
     <NavigationContainer>
     <Stack.Navigator>
-    <Stack.Screen name="Products" component={BB} />
-    <Stack.Screen name="AddProduct" component={AA} />
+    <Stack.Screen name="Products" component={feed} />
+    <Stack.Screen name="AddProduct" component={Add} />
     </Stack.Navigator>
     </NavigationContainer>
  )
@@ -32,6 +30,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'center',    
   },
 });
